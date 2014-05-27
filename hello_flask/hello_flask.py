@@ -10,10 +10,6 @@ def index():
     """ Displays the index page accesible at '/'  """
     return  flask.render_template('index.html', title = 'Home')
 
-if __name__ == '__main__':
-    APP.debug=True
-    APP.run()
-
 @APP.route('/hello/<name>/')
 def hello(name):
     """ Displays the page greats who ever comes to visit it.
@@ -34,7 +30,13 @@ def blog():
         }
         ]
 
-    return render_template("blog.html",
+    return flask.render_template("blog.html",
         title = 'blog',
         user = user,
-        posts = posts)    
+        posts = post)    
+
+
+if __name__ == '__main__':
+    APP.debug=True
+    APP.run()
+
