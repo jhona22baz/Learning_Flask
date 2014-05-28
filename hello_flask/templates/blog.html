@@ -4,9 +4,17 @@
     {% endblock %}
 
 {% block body %}
-    <h1>Hi, {{user.nickname}}!</h1>
-    {% for post in posts %}
-    <div> <p>{{post.author.nickname}} says: <b>{{post.body}}</b></p></div>
-    {% endfor %}
 
+ <h1>Hi, {{user.nickname}}!</h1>
+    
+    {% for post in posts %}
+    
+        <div class="blog-post">
+            <h2 class="blog-post-title">{{post.titlepost}}</h2>
+            <p class="blog-post-meta">January 1, 2014 by <a href="#">{{post.author.nickname}}</a></p>
+
+            <p>{{post.body}}</p>
+            
+          </div><!-- /.blog-post -->
+    {% endfor %}
 {% endblock %}

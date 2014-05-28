@@ -22,10 +22,12 @@ def blog():
     post = [
         {
             'author':{'nickname':'Jhona'},
+            'titlepost':'beautiful',
             'body':'Something greatefull happend'
         },
         {
             'author':{'nickname':'Vianey'},
+            "titlepost":"It's so Cool",
             "body": " I'm so prety and cool "
         }
         ]
@@ -38,5 +40,5 @@ def blog():
 
 if __name__ == '__main__':
     APP.debug=True
-    APP.run()
+    APP.run(host='0.0.0.0',debug=True,port=80)
 
