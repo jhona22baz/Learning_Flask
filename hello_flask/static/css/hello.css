@@ -109,7 +109,7 @@ h6, .h6 {
 }
 .sidebar-module-inset {
   padding: 15px;
-  background-color: #f5f5f5;
+  background-color: #E8EAEB;
   border-radius: 4px;
 }
 .sidebar-module-inset p:last-child,
@@ -330,7 +330,7 @@ header p {
 }
 
 #cd-team {
-  background: #8abeb2;
+  background: #E8EAEB;
 }
 #cd-team .cd-container {
   max-width: 1200px;
@@ -424,7 +424,7 @@ header p {
   overflow-y: auto;
   /* smooth scrolling on mobile phones and tablets */
   -webkit-overflow-scrolling: touch;
-  background: #5c4b51;
+  background: #70686B;
   z-index: 1;
   /* this how we move the author bio section off the canvas */
   -webkit-transform: translateX(270px);
@@ -458,8 +458,8 @@ header p {
   left: 0;
   width: 100%;
   height: 80px;
-  background: -webkit-linear-gradient( bottom , #5c4b51, rgba(92, 75, 81, 0));
-  background: linear-gradient(to top, #5c4b51, rgba(92, 75, 81, 0));
+  background: -webkit-linear-gradient( bottom , #70686B, rgba(92, 75, 81, 0));
+  background: linear-gradient(to top, #70686B, rgba(92, 75, 81, 0));
 }
 .no-cssgradients .cd-member-bio .cd-member-bio-pict::after {
   display: none;

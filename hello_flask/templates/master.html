@@ -5,6 +5,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+    {% if title %}
+    <title>{{title}} - microblog</title>
+    {% else %}
+    <title>microblog</title>
+    {% endif %}
+    
     <title> {% block title %}{% endblock %} - Hello Flask!</title>
     
     <!-- Custom styles for this template -->
@@ -51,13 +57,12 @@
             <p>Etiam porta <em>sem malesuada magna</em> 
             Jhonatan Bazaldúa Oliva es un joven apasionado por la tecnologia. bla bla bla</p>
             <section id="cd-team" class="cd-section">
-		    	<div class="cd-container">
-		    		<h2>Our team</h2>
+		    	<div class="cd-container">		    		
 		    		<ul>
 		    			<li>
 		    				<a href="#0" data-type="member-1">
 		    					<figure>
-		    						<img src="img/team-member-1.jpg" alt="Team member 1">
+		    						<img src="/static/img/team-member-2.jpg" alt="Team member 1">
 		    						<div class="cd-img-overlay"><span>View Bio</span></div>
 		    					</figure>
 		    					<div class="cd-member-info">
@@ -67,10 +72,7 @@
 		    			</li>
 		    		</ul>
 		    	</div> <!-- cd-container -->
-		    </section> <!-- cd-team -->
-                        
-                        
-                        
+		    </section> <!-- cd-team -->                                                                        
           </div>
           <div class="sidebar-module">
             <h4>Archives</h4>
@@ -112,7 +114,7 @@
 
     <div class="cd-member-bio member-1">
 		<div class="cd-member-bio-pict">
-			<img src="img/member-bio-img-1.jpg" alt="Member Bio image">
+			<img src="/static/img/member-bio-img-1.jpg" alt="Member Bio image">
 		</div> <!-- cd-member-bio-pict -->
 
 		<div class="cd-bio-content">
