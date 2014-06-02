@@ -36,11 +36,13 @@ def blog():
         title = 'blog',
         user = user,
         posts = post)    
-
+@APP.route('/about')
+def about():
+    return flask.render_template("about.html",title = "about")
 
 if __name__ == '__main__':
     APP.debug=True
-    APP.run()
+    APP.run(host='0.0.0.0',debug=True,port=80)
     
 #host='0.0.0.0',debug=True,port=80    
 
