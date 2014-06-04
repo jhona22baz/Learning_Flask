@@ -1,20 +1,22 @@
 #!/usr/bin/env python
-import flask
-
+from flask import Flask, render_template,request
+from forms import ContactForm
 # Create the application
-APP = flask.Flask(__name__)
+APP = Flask(__name__)
+
+APP.secret_key = 'codeLearningKey'
 
 @APP.route('/')
 @APP.route('/index')
 def index():
     """ Displays the index page accesible at '/'  """
-    return  flask.render_template('index.html', title = 'Home')
+    return  render_template('index.html', title = 'Home')
 
 @APP.route('/hello/<name>/')
 def hello(name):
     """ Displays the page greats who ever comes to visit it.
     """
-    return flask.render_template('hello.html', name=name, title = 'hello page')
+    return render_template('hello.html', name=name, title = 'hello page')
     
 @APP.route('/blog')
 def blog():
@@ -32,13 +34,23 @@ def blog():
         }
         ]
 
-    return flask.render_template("blog.html",
+    return render_template("blog.html",
         title = 'blog',
         user = user,
         posts = post)    
+
 @APP.route('/about')
 def about():
-    return flask.render_template("about.html",title = "about")
+    return render_template("about.html",title = "about")
+    
+@APP.route('/contact',methods=['GET','POST'])
+def contact():
+    form = ContactForm()
+    
+    if request.method == 'POST':
+        return 'Forsm posted.'
+    elif request.method == 'GET':
+        return render_template('contact.html',form=form)
 
 if __name__ == '__main__':
     APP.debug=True
