@@ -6,11 +6,11 @@ from wtforms.validators import Length, Email, InputRequired
 
 class ContactForm(Form):
     name = TextField("Nombre", validators=[InputRequired('Please enter your name.')])
-    #name = TextField("Nombre",["class ='col-sm-2'"] )
+    
     email = TextField("Email", validators=[
            Required('Please provide a valid email address'),
            Length(min=6, message=(u'Email address too short')),
            Email(message=(u'That\'s not a valid email address.'))])
-    subject = TextField("Subject",validators=[InputRequired('Por favor ingresa un asunto al correo')])
-    message = TextAreaField("Message")
+    subject = TextField("Subject",validators=[InputRequired('Please provide a subject')])
+    message = TextAreaField("Message",validators = [InputRequired('I need to know your message')])
     submit = SubmitField("Send")
