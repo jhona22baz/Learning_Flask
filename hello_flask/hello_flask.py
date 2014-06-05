@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from flask import Flask, render_template,request
+from flask import Flask, render_template,request, flash
 from forms import ContactForm
 # Create the application
 APP = Flask(__name__)
@@ -45,12 +45,19 @@ def about():
     
 @APP.route('/contact',methods=['GET','POST'])
 def contact():
+    """
+    The contact method
+    """
     form = ContactForm()
     
     if request.method == 'POST':
-        return 'Forsm posted.'
+        form = ContactForm(request.form)
+        if form.validate():
+            render_template('OK')
+        else:
+            return render_template('contact.html', title = "contatactame", form=form)
     elif request.method == 'GET':
-        return render_template('contact.html',form=form)
+        return render_template('contact.html',title = 'contactame', form=form)
 
 if __name__ == '__main__':
     APP.debug=True
