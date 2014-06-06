@@ -1,10 +1,23 @@
 #!/usr/bin/env python
 from flask import Flask, render_template,request, flash
 from forms import ContactForm
+from flask.ext.mail import Message, Mail
 # Create the application
+mail = Mail()
 APP = Flask(__name__)
 
 APP.secret_key = 'codeLearningKey'
+
+APP.config["MAIL_SERVER"] = "smtp.gmail.com"
+APP.config["MAIL_PORT"] = 465
+APP.config["MAIL_USE_SSL"] = True
+APP.config["MAIL_USERNAME"] = 'jhona.22.baz'
+APP.config["MAIL_PASSWORD"] = 'password'
+ 
+ # administrator list
+ADMINS = ['jhona.22.baz@gmail.com']
+
+mail.init_app(APP)
 
 @APP.route('/')
 @APP.route('/index')
@@ -34,10 +47,7 @@ def blog():
         }
         ]
 
-    return render_template("blog.html",
-        title = 'blog',
-        user = user,
-        posts = post)    
+    return render_template("blog.html", title = 'blog', user = user, posts = post)    
 
 @APP.route('/about')
 def about():
@@ -53,7 +63,10 @@ def contact():
     if request.method == 'POST':
         form = ContactForm(request.form)
         if form.validate():
-            render_template('OK')
+            msg = Message(form.subject.data, sender = ADMINS[0], recipients = ADMINS) 
+            msg.body = """From: %s;\n <%s>;\n %s """ % (form.name.data, form.email.data, form.message.data)
+            mail.send(msg)
+            return render_template('contact.html',title = 'Contactame',success = True)
         else:
             return render_template('contact.html', title = "contatactame", form=form)
     elif request.method == 'GET':

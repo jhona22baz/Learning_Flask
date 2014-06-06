@@ -2,11 +2,17 @@
 
 {% block body %}
      <div class="blog-header">
+     
+        <p>Thank you for your message. We'll get back to you shortly.</p>
         <h1 class="blog-title">Contact to me</h1>
         <p class="lead blog-description">send a message to Jhona22baz.</p>
     </div>
     
     <div class="col-sm-8 blog-main">
+    {% if success %}
+        <h2>Thank you!</h2>
+        <p>You has send a message to me.</p>
+    {% else %}
         <form class="form-horizontal" role = "form" action = "{{url_for('contact')}}" method=post>
             {{ form.hidden_tag() }}
             
@@ -54,6 +60,7 @@
                 </div>
             </div>
         </form>
+        {% endif %}
     </div><!-- /.blog-main -->
     
 {% endblock %}
